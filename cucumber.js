@@ -1,6 +1,6 @@
 module.exports = {
   default: {
-    require: ["./features/stepDef/*.js","./features/hooks/**/*.js"],
+    require: ["./features/stepDef/*.js","./features/Hooks/**/*.js"],
     
     format: [
       "progress-bar",
