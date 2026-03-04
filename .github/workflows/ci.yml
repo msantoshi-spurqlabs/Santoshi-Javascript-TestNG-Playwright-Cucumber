@@ -24,14 +24,15 @@ jobs:
       - name: Install Dependencies
         run: npm ci
         
-      - name: Install Playwright
-        run: npm install -D @playwright/test
-
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run Cucumber Tests
-        run: npm run test:smoke
+      - name: Run lint
+        run: npm run lint
+        continue-on-error: true
+
+      - name: Run Tests
+        run: npm test
 
       - name: Install Allure Commandline
         run: npm install -g allure-commandline
