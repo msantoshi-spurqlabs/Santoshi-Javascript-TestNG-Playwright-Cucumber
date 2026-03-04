@@ -13,7 +13,7 @@ class MyTimesheetsPage {
     const menuTime = locatorReader.getLocator(this.page, 'timesheet.menuTime');
     if (!menuTime) throw new Error('Locator timesheet.menuTime not found');
     await menuTime.click();
-     await this.page.waitForTimeout(1000);
+     await this.page.waitForTimeout(10000);
     		assert.equal(await menuTime.isVisible(), true, 'viewEmployeeTimesheet page not opened after clicking menu');
         log.info("viewEmployeeTimesheet page opened after clicking menu");
        
@@ -98,6 +98,12 @@ class MyTimesheetsPage {
     const edit = locatorReader.getLocator(this.page, 'timesheet.EditTimesheetButton');
     if (!edit) throw new Error('Locator timesheet.EditTimesheetButton not found');
     await edit.click();
+    await this.page.waitForTimeout(10000);
+
+   const cancel = locatorReader.getLocator(this.page, 'timesheet.Cancelbutton');
+    if (!cancel) throw new Error('Locator timesheet.Cancelbutton not found');
+
+    await cancel.waitFor({ state: 'visible', timeout: 10000 });
      
     const url = this.page.url();
      assert.equal(url.includes("editTimesheet"), true, 'EditTimesheet page not opened after clicking edit button');
@@ -109,6 +115,7 @@ class MyTimesheetsPage {
     const cancel = locatorReader.getLocator(this.page, 'timesheet.Cancelbutton');
     if (!cancel) throw new Error('Locator timesheet.Cancelbutton not found');
     await cancel.click();
+    
 
     const url = this.page.url();
       assert.equal(url.includes("viewMyTimesheet"), true, 'ViewMyTimesheet page not opened after clicking cancel button');

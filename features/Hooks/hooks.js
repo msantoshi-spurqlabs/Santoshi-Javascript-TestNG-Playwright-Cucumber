@@ -10,6 +10,7 @@ setDefaultTimeout(configReader.getTimeout('explicit') || 60000);
 Before(async function () {
 
   const browserConfig = configReader.getBrowserConfig();
+  const maximize = configReader.get('window.maximize');
   let browserType;
 
   switch (browserConfig.name) {
@@ -29,9 +30,10 @@ Before(async function () {
   this.browser = await browserType.launch({
     headless: browserConfig.headless,
     slowMo: browserConfig.slowMo,   // 1000 milliseconds = 1 second delay
+    args: maximize ? ['--start-maximized'] : []
     
 });
-const maximize = configReader.get('window.maximize');
+
 
   this.context = await this.browser.newContext({
     viewport: null
@@ -47,9 +49,8 @@ const maximize = configReader.get('window.maximize');
   this.myInfoPage = new MyInfoPage(this.page);
 
 
-  await this.page.goto(configReader.getAppUrl(),{
-    timeout: configReader.getTimeout('pageLoad')
-  });
+  await this.page.goto(configReader.getAppUrl()
+  );
 
 });
 

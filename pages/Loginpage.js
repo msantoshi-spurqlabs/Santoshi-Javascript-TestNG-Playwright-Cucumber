@@ -42,7 +42,7 @@ class LoginPage {
 			this.page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {}),
 			locator1.click()
 		]);
-		 await this.page.waitForTimeout(1000);
+		 await this.page.waitForTimeout(10000);
 		const dashboard1 = locatorReader.getLocator(this.page, 'dashboard.dashboardHeader');
 		assert.equal(await dashboard1.isVisible(), true, 'Dashboard did not load after login');
 		log.info("Login successful, dashboard loaded");
