@@ -9,7 +9,7 @@ setDefaultTimeout(60 * 1000);
 Before(async function () {
 
 this.browser = await chromium.launch({
-  headless: false,
+  headless: true,
   slowMo: 2000,   // 1000 milliseconds = 1 second delay
   args: ['--start-maximized']
 });
