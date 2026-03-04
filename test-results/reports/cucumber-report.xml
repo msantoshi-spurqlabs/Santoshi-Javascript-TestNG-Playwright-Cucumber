@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<testsuite name="Cucumber" time="95.783" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-03-03T11:15:57.258Z">
-  <testcase classname="My Timesheet Management in OrangeHRM" name="TC001 - Login to application" time="33.124">
+<testsuite name="Cucumber" time="74.58" tests="4" skipped="0" failures="2" errors="0" timestamp="2026-03-03T13:40:01.598Z">
+  <testcase classname="My Timesheet Management in OrangeHRM" name="TC001 - Login to application" time="34.331">
     <system-out><![CDATA[Given user is on OrangeHRM login page.......................................passed
 When user enter username....................................................passed
 When user enter password....................................................passed
@@ -8,7 +8,9 @@ When user click on Login button.............................................pass
 Then the user is logged in to the application...............................passed
 Then the user is logged in to the application...............................passed]]></system-out>
   </testcase>
-  <testcase classname="My Timesheet Management in OrangeHRM" name="TC002 - Add Timesheet details" time="57.097">
+  <testcase classname="My Timesheet Management in OrangeHRM" name="TC002 - Add Timesheet details" time="51.484">
+    <failure type="AssertionError" message="ViewMyTimesheet page not opened after clicking cancel button"><![CDATA[    at MyTimesheetsPage.clickCancelButton (C:\Users\Santoshi\IdeaProjects\Playwright-Javascript\pages\MyTimesheetsPage.js:114:14)
+    at async World.<anonymous> (C:\Users\Santoshi\IdeaProjects\Playwright-Javascript\features\stepDef\timesheetstepDef.js:83:3)]]></failure>
     <system-out><![CDATA[Given user is on OrangeHRM login page.......................................passed
 When user enter username....................................................passed
 When user enter password....................................................passed
@@ -23,10 +25,10 @@ When user select My Timesheets option from the Timesheet dropdown...........pass
 Then ViewMyTimesheet page is displayed......................................passed
 When User click on Edit button..............................................passed
 Then EditTimesheet page is displayed........................................passed
-When User click on Cancel button............................................passed
-Then My Timesheet page is displayed.........................................passed]]></system-out>
+When User click on Cancel button............................................failed
+Then My Timesheet page is displayed.........................................skipped]]></system-out>
   </testcase>
-  <testcase classname="My Timesheet Management in OrangeHRM" name="TC003 - Add Contact details - #1.1" time="65.495">
+  <testcase classname="My Timesheet Management in OrangeHRM" name="TC003 - Add Contact details - #1.1" time="69.405">
     <system-out><![CDATA[Given user is on OrangeHRM login page.......................................passed
 When user enter username....................................................passed
 When user enter password....................................................passed
@@ -48,26 +50,28 @@ When user enter work email "test@xcmail.com"................................pass
 When user click on Save button..............................................passed
 Then Contact Details is saved successfully..................................passed]]></system-out>
   </testcase>
-  <testcase classname="My Timesheet Management in OrangeHRM" name="TC003 - Add Contact details - #1.2" time="58.023">
+  <testcase classname="My Timesheet Management in OrangeHRM" name="TC003 - Add Contact details - #1.2" time="33.905">
+    <failure type="AssertionError" message="Dashboard did not load after login"><![CDATA[    at LoginPage.clickLogin (C:\Users\Santoshi\IdeaProjects\Playwright-Javascript\pages\Loginpage.js:47:10)
+    at async World.<anonymous> (C:\Users\Santoshi\IdeaProjects\Playwright-Javascript\features\stepDef\timesheetstepDef.js:33:3)]]></failure>
     <system-out><![CDATA[Given user is on OrangeHRM login page.......................................passed
 When user enter username....................................................passed
 When user enter password....................................................passed
-When user click on Login button.............................................passed
-Then the user is logged in to the application...............................passed
-Given user is on dashbrd page...............................................passed
-When user click on My Info tab..............................................passed
-Then viewPersonalDetails page is displayed with all personal details of the user..passed
-When user click on Contact Details subtab...................................passed
-Then ContactDetails page is displayed.......................................passed
-When user enter steet1 "123 Street".........................................passed
-When user enter city "Los Angeles"..........................................passed
-When user enter state "CA"..................................................passed
-When user enter zip code "54321"............................................passed
-When user enter country "Angola"............................................passed
-When user enter mobile "7654320912".........................................passed
-When user enter work phone "11114455339"....................................passed
-When user enter work email "cc@ccmail.com"..................................passed
-When user click on Save button..............................................passed
-Then Contact Details is saved successfully..................................passed]]></system-out>
+When user click on Login button.............................................failed
+Then the user is logged in to the application...............................skipped
+Given user is on dashbrd page...............................................skipped
+When user click on My Info tab..............................................skipped
+Then viewPersonalDetails page is displayed with all personal details of the user..skipped
+When user click on Contact Details subtab...................................skipped
+Then ContactDetails page is displayed.......................................skipped
+When user enter steet1 "123 Street".........................................skipped
+When user enter city "Los Angeles"..........................................skipped
+When user enter state "CA"..................................................skipped
+When user enter zip code "54321"............................................skipped
+When user enter country "Angola"............................................skipped
+When user enter mobile "7654320912".........................................skipped
+When user enter work phone "11114455339"....................................skipped
+When user enter work email "cc@ccmail.com"..................................skipped
+When user click on Save button..............................................skipped
+Then Contact Details is saved successfully..................................skipped]]></system-out>
   </testcase>
 </testsuite>

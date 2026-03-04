@@ -31,7 +31,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Cucumber Tests
-        run: npm run test
+        run: npm run test:smoke
 
       - name: Install Allure Commandline
         run: npm install -g allure-commandline
