@@ -3,19 +3,41 @@ const { chromium, firefox, webkit } = require('playwright');
 const Loginpage = require('../../pages/Loginpage');
 const MyTimesheetsPage = require('../../pages/MyTimesheetsPage');
 const MyInfoPage = require('../../pages/MyInfoPage');
+const configReader = require('../../utils/configReader');
 
-setDefaultTimeout(60 * 1000);
+setDefaultTimeout(configReader.getTimeout('explicit') || 60000);
 
 Before(async function () {
 
-this.browser = await chromium.launch({
-  headless: true,
-  slowMo: 2000,   // 1000 milliseconds = 1 second delay
-  args: ['--start-maximized']
+  const browserConfig = configReader.getBrowserConfig();
+  let browserType;
+
+  switch (browserConfig.name) {
+    case 'chromium':
+      browserType = chromium;
+      break;
+    case 'firefox':
+      browserType = firefox;
+      break;
+    case 'webkit':
+      browserType = webkit;
+      break;
+    default:
+      browserType = chromium;
+  }
+
+  this.browser = await browserType.launch({
+    headless: browserConfig.headless,
+    slowMo: browserConfig.slowMo,   // 1000 milliseconds = 1 second delay
+    
 });
+const maximize = configReader.get('window.maximize');
+
   this.context = await this.browser.newContext({
     viewport: null
 });
+
+
 
   this.page = await this.context.newPage();
 
@@ -25,7 +47,9 @@ this.browser = await chromium.launch({
   this.myInfoPage = new MyInfoPage(this.page);
 
 
-  await this.page.goto('https://opensource-demo.orangehrmlive.com/');
+  await this.page.goto(configReader.getAppUrl(),{
+    timeout: configReader.getTimeout('pageLoad')
+  });
 
 });
 
